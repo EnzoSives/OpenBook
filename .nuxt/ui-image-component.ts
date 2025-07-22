@@ -1,0 +1,1 @@
+export { default } from "C:/Users/enzo-sives/Documents/Nueva carpeta/openbook_online/node_modules/@nuxt/image/dist/runtime/components/NuxtImg.vue";
