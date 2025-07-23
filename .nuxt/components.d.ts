@@ -14,6 +14,7 @@ type LazyComponent<T> = (T & DefineComponent<HydrationStrategies, {}, {}, {}, {}
 interface _GlobalComponents {
       'AccessoryCard': typeof import("../app/components/AccessoryCard.vue")['default']
     'BookCard': typeof import("../app/components/BookCard.vue")['default']
+    'CartPopover': typeof import("../app/components/CartPopover.vue")['default']
     'TestimonialCard': typeof import("../app/components/TestimonialCard.vue")['default']
     'ProseA': typeof import("../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseA.vue")['default']
     'ProseBlockquote': typeof import("../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseBlockquote.vue")['default']
@@ -142,6 +143,7 @@ interface _GlobalComponents {
     'NuxtRouteAnnouncer': typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
       'LazyAccessoryCard': LazyComponent<typeof import("../app/components/AccessoryCard.vue")['default']>
     'LazyBookCard': LazyComponent<typeof import("../app/components/BookCard.vue")['default']>
+    'LazyCartPopover': LazyComponent<typeof import("../app/components/CartPopover.vue")['default']>
     'LazyTestimonialCard': LazyComponent<typeof import("../app/components/TestimonialCard.vue")['default']>
     'LazyProseA': LazyComponent<typeof import("../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseA.vue")['default']>
     'LazyProseBlockquote': LazyComponent<typeof import("../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseBlockquote.vue")['default']>
@@ -276,6 +278,7 @@ declare module 'vue' {
 
 export const AccessoryCard: typeof import("../app/components/AccessoryCard.vue")['default']
 export const BookCard: typeof import("../app/components/BookCard.vue")['default']
+export const CartPopover: typeof import("../app/components/CartPopover.vue")['default']
 export const TestimonialCard: typeof import("../app/components/TestimonialCard.vue")['default']
 export const ProseA: typeof import("../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseA.vue")['default']
 export const ProseBlockquote: typeof import("../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseBlockquote.vue")['default']
@@ -404,6 +407,7 @@ export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components
 export const NuxtRouteAnnouncer: typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
 export const LazyAccessoryCard: LazyComponent<typeof import("../app/components/AccessoryCard.vue")['default']>
 export const LazyBookCard: LazyComponent<typeof import("../app/components/BookCard.vue")['default']>
+export const LazyCartPopover: LazyComponent<typeof import("../app/components/CartPopover.vue")['default']>
 export const LazyTestimonialCard: LazyComponent<typeof import("../app/components/TestimonialCard.vue")['default']>
 export const LazyProseA: LazyComponent<typeof import("../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseA.vue")['default']>
 export const LazyProseBlockquote: LazyComponent<typeof import("../node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseBlockquote.vue")['default']>

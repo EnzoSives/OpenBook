@@ -10,20 +10,29 @@
           <input type="text" placeholder="Busca tu próxima historia..." />
           <button class="search-button">🔍</button>
         </div>
+
         <div class="user-actions">
           <NuxtLink to="/perfil" class="icon-link">👤</NuxtLink>
-          <NuxtLink to="/carrito" class="icon-link cart-icon">
+          
+          <div class="icon-link cart-icon" @click="toggleCartModal">
             🛒
-            <span class="cart-count">0</span>
-          </NuxtLink>
+            <span class="cart-count">{{ cartCount }}</span>
+          </div>
+          
+          <CartPopover
+            v-if="isCartModalVisible"
+            :cart-items="cartItems"
+            :cart-total="cartTotal"
+            :cart-count="cartCount"
+            @close="isCartModalVisible = false"
+            @remove-item="removeFromCart"
+          />
         </div>
       </div>
     </header>
 
     <section class="hero-section">
-      <div class="hero-background">
-        <!-- <img src="/images/libreria.jpg" alt="Fondo de librería " /> -->
-      </div>
+      <div class="hero-background"></div>
       <div class="hero-content container">
         <h1>Tu Próxima Aventura Comienza Aquí.</h1>
         <p>Libros nuevos y usados cuidadosamente seleccionados, más accesorios que inspiran tu pasión por la lectura.</p>
@@ -35,7 +44,10 @@
       <section class="featured-section">
         <h2>Novedades que no te puedes perder</h2>
         <div class="book-grid">
-          <BookCard v-for="book in newArrivals" :key="book.id" :book="book" />
+          <div v-for="book in newArrivals" :key="book.id" class="book-card-wrapper">
+            <BookCard :book="book" />
+            
+          </div>
         </div>
         <NuxtLink to="/novedades" class="view-all-link">Ver todas las novedades &gt;</NuxtLink>
       </section>
@@ -43,7 +55,10 @@
       <section class="featured-section">
         <h2>Joyas Ocultas: Nuestros Libros Usados Seleccionados</h2>
         <div class="book-grid">
-          <BookCard v-for="book in usedBooks" :key="book.id" :book="book" :isUsed="true" />
+           <div v-for="book in usedBooks" :key="book.id" class="book-card-wrapper">
+            <BookCard :book="book" :isUsed="true" />
+          
+          </div>
         </div>
         <NuxtLink to="/usados" class="view-all-link">Explorar libros usados &gt;</NuxtLink>
       </section>
@@ -51,21 +66,12 @@
       <section class="genres-section">
         <h2>Encuentra tu Género Ideal</h2>
         <div class="genres-grid">
-          <NuxtLink to="/genero/ficcion" class="genre-card">
-            📖 Ficción
-          </NuxtLink>
-          <NuxtLink to="/genero/fantasia" class="genre-card">
-            ✨ Fantasía
-          </NuxtLink>
-          <NuxtLink to="/genero/misterio" class="genre-card">
-            🔍 Misterio
-          </NuxtLink>
-          <NuxtLink to="/genero/ciencia-ficcion" class="genre-card">
-            🚀 Ciencia Ficción
-          </NuxtLink>
+          <NuxtLink to="/genero/ficcion" class="genre-card">📖 Ficción</NuxtLink>
+          <NuxtLink to="/genero/fantasia" class="genre-card">✨ Fantasía</NuxtLink>
+          <NuxtLink to="/genero/misterio" class="genre-card">🔍 Misterio</NuxtLink>
+          <NuxtLink to="/genero/ciencia-ficcion" class="genre-card">🚀 Ciencia Ficción</NuxtLink>
         </div>
       </section>
-
       <section class="accessories-section">
         <h2>Accesorios que Amamos</h2>
         <div class="accessories-grid">
@@ -73,7 +79,6 @@
         </div>
         <NuxtLink to="/accesorios" class="view-all-link">Ver todos los accesorios &gt;</NuxtLink>
       </section>
-
       <section class="testimonials-section">
         <h2>Lo que dicen nuestros lectores</h2>
         <div class="testimonial-carousel">
@@ -96,7 +101,8 @@
         <div class="footer-social">
           <h3>Síguenos</h3>
           <div class="social-icons">
-            <a href="#" target="_blank">📸</a> <a href="#" target="_blank">📘</a> </div>
+            <a href="#" target="_blank">📸</a> <a href="#" target="_blank">📘</a>
+          </div>
         </div>
         <div class="footer-info">
           <h3>Métodos de Pago</h3>
@@ -112,19 +118,25 @@
 </template>
 
 <script setup lang="ts">
-// Script setup es la forma recomendada en Vue 3 y Nuxt 3 para la lógica del componente.
-
-// IMPORTACIONES
-// Importa tus componentes si los creas en la carpeta 'components/'
 import { ref } from 'vue';
 
+// IMPORTACIONES
 import BookCard from '~/components/BookCard.vue';
 import AccessoryCard from '~/components/AccessoryCard.vue';
 import TestimonialCard from '~/components/TestimonialCard.vue';
+// CORRECCIÓN: Se añaden las importaciones que faltaban
+import CartPopover from '~/components/CartPopover.vue'; 
+import { useCart } from '~/composables/useCart';
 
-// DATOS DE EJEMPLO (IDEALMENTE VENDRÍAN DE TU BACKEND)
-// Aquí definimos datos reactivos para las secciones, usando 'ref'
-// En un proyecto real, usarías 'useFetch' o 'axios' para obtener esto de tu API
+// CORRECCIÓN: Se añade toda la lógica de control del carrito que faltaba
+const { cartItems, cartCount, cartTotal, addToCart, removeFromCart } = useCart();
+const isCartModalVisible = ref(false);
+
+const toggleCartModal = () => {
+  isCartModalVisible.value = !isCartModalVisible.value;
+};
+
+// DATOS DE EJEMPLO
 const newArrivals = ref([
   { id: 1, title: 'El Viaje del Sol', author: 'Ana López', price: 25.99, imageUrl: '/images/book1.jpg' },
   { id: 2, title: 'Sombras Antiguas', author: 'Carlos Ruiz', price: 22.50, imageUrl: '/images/book2.jpg' },
@@ -133,8 +145,8 @@ const newArrivals = ref([
 ]);
 
 const usedBooks = ref([
-  { id: 5, title: 'Crónicas de Narnia (Usado)', author: 'C.S. Lewis', price: 15.00, imageUrl: '/images/book5.jpg' },
-  { id: 6, title: '1984 (Usado)', author: 'George Orwell', price: 12.00, imageUrl: '/images/book6.jpg' },
+  { id: 5, title: 'Crónicas de Narnia', author: 'C.S. Lewis', price: 15.00, imageUrl: '/images/book5.jpg' },
+  { id: 6, title: '1984', author: 'George Orwell', price: 12.00, imageUrl: '/images/book6.jpg' },
 ]);
 
 const featuredAccessories = ref([
@@ -142,32 +154,21 @@ const featuredAccessories = ref([
   { id: 8, name: 'Lámpara de Lectura LED', price: 15.00, imageUrl: '/images/accessory2.jpg' },
 ]);
 
-// Puedes usar 'useHead' de Nuxt para SEO específico de esta página
 useHead({
   title: 'OpenBook - Tu Librería Online de Libros Nuevos y Usados',
   meta: [
     { name: 'description', content: 'Explora una amplia selección de libros nuevos y usados, y encuentra accesorios de lectura únicos. ¡Tu próxima aventura te espera!' }
   ]
 })
-
-// Lógica de búsqueda (ejemplo, implementarías la búsqueda real con tu backend)
-const handleSearch = () => {
-  // Aquí llamarías a tu API de búsqueda con el término ingresado
-  console.log('Buscando...');
-}
-
-// Puedes definir más funciones o lógica aquí
 </script>
 
 <style scoped>
-/* ESTILOS CSS - Aquí va el diseño para que se vea moderno, elegante y llamativo */
-/* Usa SCSS/SASS si lo configuras en nuxt.config.ts */
-
+/* ESTILOS ORIGINALES (la mayoría no cambia) */
 .home-page {
-  font-family: 'Georgia', serif; /* Para títulos y un toque clásico */
-  --text-font: 'Roboto', sans-serif; /* Para el cuerpo del texto */
-  color: #333; /* Color de texto principal */
-  background-color: #f8f8f8; /* Un blanco roto cálido */
+  font-family: 'Georgia', serif; 
+  --text-font: 'Roboto', sans-serif;
+  color: #333;
+  background-color: #f8f8f8;
 }
 
 .container {
@@ -176,7 +177,6 @@ const handleSearch = () => {
   padding: 0 20px;
 }
 
-/* --- Header --- */
 .main-header {
   background-color: #fff;
   padding: 15px 0;
@@ -193,7 +193,7 @@ const handleSearch = () => {
 .logo {
   display: flex;
   align-items: center;
-  font-family: 'Playfair Display', serif; /* O una fuente similar para el logo */
+  font-family: 'Playfair Display', serif;
   font-size: 1.8em;
   font-weight: bold;
   color: #333;
@@ -201,13 +201,13 @@ const handleSearch = () => {
 }
 
 .logo img {
-  height: 40px; /* Tamaño de tu logo */
+  height: 40px;
   margin-right: 10px;
 }
 
 .search-bar {
   display: flex;
-  flex-grow: 1; /* Para que ocupe espacio */
+  flex-grow: 1;
   margin: 0 30px;
   max-width: 500px;
 }
@@ -228,7 +228,14 @@ const handleSearch = () => {
   padding: 10px;
   cursor: pointer;
   font-size: 1.2em;
-  margin-left: -40px; /* Para superponer el icono */
+  margin-left: -40px;
+}
+
+.user-actions {
+  /* CORRECCIÓN: Regla clave para que el popover se posicione correctamente */
+  position: relative; 
+  display: flex;
+  align-items: center;
 }
 
 .user-actions .icon-link {
@@ -236,14 +243,19 @@ const handleSearch = () => {
   color: #555;
   margin-left: 20px;
   text-decoration: none;
-  position: relative;
+}
+
+/* CORRECCIÓN: cursor:pointer para el ícono del carrito */
+.user-actions .cart-icon {
+  cursor: pointer;
+  position: relative; /* Para el contador */
 }
 
 .cart-icon .cart-count {
   position: absolute;
   top: -8px;
   right: -8px;
-  background-color: #4CAF50; /* O tu color de acento, un verde esmeralda */
+  background-color: #4CAF50;
   color: white;
   border-radius: 50%;
   padding: 2px 6px;
@@ -251,43 +263,37 @@ const handleSearch = () => {
   font-weight: bold;
 }
 
-/* --- Hero Section --- */
 .hero-section {
   position: relative;
-  height: 500px; /* Altura del hero */
+  height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
   overflow: hidden;
-  /* ¡Aquí aplicamos la imagen de fondo directamente! */
- background-image: url('/images/libreria.jpg');  /* Asegúrate de que esta ruta sea correcta */
-  background-size: cover; /* Cubre todo el área sin distorsionar */
-  background-position: center center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-image: url('/images/libreria.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
-/* El pseudo-elemento para la capa oscura y el z-index */
 .hero-section::before {
-  content: ''; /* Es necesario para pseudo-elementos */
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Capa oscura semitransparente (ajusta el 0.4 si es necesario) */
-  /* filter: brightness(0.6);  -- Esto lo quitamos porque ya lo manejamos con rgba */
-  z-index: 0; /* Asegura que esté justo encima de la imagen, pero debajo del contenido */
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
 }
 
-/* El contenido del Hero ahora necesita un z-index más alto que el pseudo-elemento */
 .hero-content {
-  position: relative; /* Crucial para que su z-index funcione en relación con hero-section::before */
-  z-index: 1; /* Asegura que el texto y el botón estén por encima de la capa oscura y la imagen */
+  position: relative;
+  z-index: 1;
 }
 
-/* Estilos de h1 y p se mantienen iguales */
 .hero-content h1 {
   font-family: 'Playfair Display', serif;
   font-size: 3.5em;
@@ -301,8 +307,9 @@ const handleSearch = () => {
   margin-bottom: 30px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
+
 .btn-primary {
-  background-color: #4CAF50; /* Tu color de acento */
+  background-color: #4CAF50;
   color: white;
   padding: 15px 30px;
   border-radius: 5px;
@@ -313,10 +320,9 @@ const handleSearch = () => {
 }
 
 .btn-primary:hover {
-  background-color: #45a049; /* Un tono un poco más oscuro al pasar el mouse */
+  background-color: #45a049;
 }
 
-/* --- Main Content Sections --- */
 .main-content {
   padding: 50px 0;
 }
@@ -341,7 +347,7 @@ const handleSearch = () => {
 
 .book-grid, .accessories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Responsivo */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 30px;
   justify-content: center;
 }
@@ -360,7 +366,6 @@ const handleSearch = () => {
   text-decoration: underline;
 }
 
-/* --- Genres Section --- */
 .genres-grid {
   display: flex;
   justify-content: center;
@@ -389,17 +394,15 @@ const handleSearch = () => {
   color: #4CAF50;
 }
 
-/* --- Testimonials Section (simplificado, usarías un carrusel real) --- */
 .testimonial-carousel {
   display: flex;
   justify-content: center;
   gap: 30px;
-  flex-wrap: wrap; /* Para responsive */
+  flex-wrap: wrap;
 }
 
-/* --- Footer --- */
 .main-footer {
-  background-color: #222; /* Un gris oscuro o negro suave */
+  background-color: #222;
   color: #f0f0f0;
   padding: 50px 0 20px;
   font-family: var(--text-font);
@@ -423,47 +426,14 @@ const handleSearch = () => {
   font-size: 1.3em;
 }
 
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links li {
-  margin-bottom: 10px;
-}
-
-.footer-links a {
-  color: #f0f0f0;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #4CAF50;
-}
-
-.social-icons a {
-  color: #f0f0f0;
-  font-size: 1.8em;
-  margin-right: 15px;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.social-icons a:hover {
-  color: #4CAF50;
-}
-
-.payment-logo {
-  height: 30px; /* Tamaño del logo de Mercado Pago */
-  margin-top: 10px;
-}
-
-.location-info {
-  font-size: 0.9em;
-  margin-top: 20px;
-  opacity: 0.8;
-}
+.footer-links ul { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { color: #f0f0f0; text-decoration: none; transition: color 0.3s ease; }
+.footer-links a:hover { color: #4CAF50; }
+.social-icons a { color: #f0f0f0; font-size: 1.8em; margin-right: 15px; text-decoration: none; transition: color 0.3s ease; }
+.social-icons a:hover { color: #4CAF50; }
+.payment-logo { height: 30px; margin-top: 10px; }
+.location-info { font-size: 0.9em; margin-top: 20px; opacity: 0.8; }
 
 .copyright {
   text-align: center;
@@ -474,64 +444,29 @@ const handleSearch = () => {
   opacity: 0.7;
 }
 
-/* Estilos básicos para los componentes BookCard, AccessoryCard, TestimonialCard */
-/* Estos deberían ser archivos .vue separados en la carpeta 'components/' */
-
-/* Ejemplo para BookCard (componentes/BookCard.vue) */
-.book-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.2s ease;
+/* CORRECCIÓN: Estilos para el botón de "Añadir al Carrito" */
+.book-card-wrapper {
+  position: relative;
 }
 
-.book-card:hover {
-  transform: translateY(-5px);
-}
-
-.book-card img {
-  width: 100%;
-  height: 250px; /* Altura fija para portadas */
-  object-fit: cover;
-}
-
-.book-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2em;
-  margin: 15px 10px 5px;
-  color: #333;
-}
-
-.book-card p {
-  font-family: var(--text-font);
-  font-size: 0.9em;
-  color: #666;
-  margin-bottom: 10px;
-}
-
-.book-card .price {
-  font-family: var(--text-font);
-  font-size: 1.1em;
-  font-weight: bold;
-  color: #4CAF50;
-  margin-bottom: 15px;
-  display: block;
-}
-
-/* Estilo para la etiqueta "Usado" */
-.book-card.used .book-img-wrapper::after {
-  content: 'Usado';
+.add-to-cart-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #FFC107; /* Amarillo para destacar */
-  color: #333;
-  padding: 3px 8px;
-  border-radius: 3px;
-  font-size: 0.8em;
-  font-weight: bold;
+  bottom: 20px;
+  left: 50%;
+  background-color: #222;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translate(-50%, 10px);
+  z-index: 2;
 }
-/* Asegúrate de que BookCard.vue tenga un slot o prop para `isUsed` para aplicar esto */
+
+.book-card-wrapper:hover .add-to-cart-btn {
+  opacity: 1;
+  transform: translateX(-50%);
+}
 </style>

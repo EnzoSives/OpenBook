@@ -900,7 +900,7 @@ const _inlineRuntimeConfig = {
   },
   "public": {
     "content": {
-      "wsUrl": "ws://localhost:4000/"
+      "wsUrl": "ws://localhost:4001/"
     },
     "mdc": {
       "components": {

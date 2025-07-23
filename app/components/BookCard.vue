@@ -105,6 +105,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+// AGREGADO: Importamos nuestro composable del carrito
+import { useCart } from '~/composables/useCart';
 
 const props = defineProps<{
   book: {
@@ -123,21 +125,27 @@ const props = defineProps<{
 
 const router = useRouter();
 
+// AGREGADO: Obtenemos la función para añadir al carrito de nuestro composable.
+// La renombramos a "addToCartGlobally" para no chocar con tu función local.
+const { addToCart: addToCartGlobally } = useCart();
+
 const isFavorited = ref(false);
 const showOverlay = ref(false);
 
 const toggleFavorite = () => {
   isFavorited.value = !isFavorited.value;
-  console.log(`Libro ${props.book.title} ${isFavorited.value ? 'añadido' : 'quitado'} de favoritos`);
+  // Tu lógica de favoritos...
 };
 
+// MODIFICADO: Tu función local ahora llama a la función global del carrito.
 const addToCart = () => {
-  console.log(`Añadir "${props.book.title}" al carrito.`);
+  console.log(`Añadir "${props.book.title}" al carrito.`); // Puedes mantener el log para depurar
+  addToCartGlobally(props.book); // <-- Esta es la línea clave que añade el libro al estado global.
 };
 
 const buyNow = () => {
   console.log(`Comprar "${props.book.title}" ahora.`);
-  addToCart();
+  addToCart(); // Esto ahora funciona correctamente porque llama a la función modificada.
   router.push('/checkout');
 };
 

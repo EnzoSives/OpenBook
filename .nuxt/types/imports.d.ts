@@ -121,6 +121,7 @@ declare global {
   const useAttrs: typeof import('vue')['useAttrs']
   const useAvatarGroup: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useAvatarGroup')['useAvatarGroup']
   const useButtonGroup: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useButtonGroup')['useButtonGroup']
+  const useCart: typeof import('../../app/composables/useCart')['useCart']
   const useColorMode: typeof import('../../node_modules/@nuxtjs/color-mode/dist/runtime/composables')['useColorMode']
   const useComponentIcons: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useComponentIcons')['useComponentIcons']
   const useCookie: typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']
@@ -211,6 +212,9 @@ declare global {
   // @ts-ignore
   export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { CartItem } from '../../app/composables/useCart'
+  import('../../app/composables/useCart')
 }
 // for vue template auto import
 import { UnwrapRef } from 'vue'
@@ -336,6 +340,7 @@ declare module 'vue' {
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useAvatarGroup: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useAvatarGroup')['useAvatarGroup']>
     readonly useButtonGroup: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useButtonGroup')['useButtonGroup']>
+    readonly useCart: UnwrapRef<typeof import('../../app/composables/useCart')['useCart']>
     readonly useColorMode: UnwrapRef<typeof import('../../node_modules/@nuxtjs/color-mode/dist/runtime/composables')['useColorMode']>
     readonly useComponentIcons: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useComponentIcons')['useComponentIcons']>
     readonly useCookie: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']>
