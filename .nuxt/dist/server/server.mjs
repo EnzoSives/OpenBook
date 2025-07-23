@@ -1,1 +1,1 @@
-export { default } from "file:///C:/Users/enzo-sives/Documents/Nueva%20carpeta/openbook_online/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
+export { default } from "file:///C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
