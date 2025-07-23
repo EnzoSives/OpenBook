@@ -3,43 +3,43 @@ import { Server } from 'node:http';
 import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getResponseStatus, getQuery as getQuery$1, readBody, getRouterParam, setHeader, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getResponseStatusText } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/h3/dist/index.mjs';
-import { escapeHtml } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/@vue/shared/dist/shared.cjs.js';
-import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/ufo/dist/index.mjs';
-import destr, { destr as destr$1 } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/destr/dist/index.mjs';
-import { renderToString } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/vue/server-renderer/index.mjs';
-import { klona } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/klona/dist/index.mjs';
-import defu, { defuFn } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/defu/dist/defu.mjs';
-import { snakeCase } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/scule/dist/index.mjs';
-import { createHead as createHead$1, propsToString, renderSSRHead } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/unhead/dist/server.mjs';
-import { stringify, uneval } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/devalue/index.js';
-import { isVNode, toValue, isRef } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/vue/index.mjs';
-import { createHooks } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/hookable/dist/index.mjs';
-import { createFetch, Headers as Headers$1 } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/ofetch/dist/node.mjs';
-import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/node-mock-http/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/unstorage/drivers/fs.mjs';
-import { digest, hash as hash$1 } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/ohash/dist/index.mjs';
-import { toRouteMatcher, createRouter } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/radix3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getResponseStatus, getQuery as getQuery$1, readBody, getRouterParam, setHeader, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getResponseStatusText } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/h3/dist/index.mjs';
+import { escapeHtml } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/@vue/shared/dist/shared.cjs.js';
+import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/ufo/dist/index.mjs';
+import destr, { destr as destr$1 } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/destr/dist/index.mjs';
+import { renderToString } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/vue/server-renderer/index.mjs';
+import { klona } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/klona/dist/index.mjs';
+import defu, { defuFn } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/defu/dist/defu.mjs';
+import { snakeCase } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/scule/dist/index.mjs';
+import { createHead as createHead$1, propsToString, renderSSRHead } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/unhead/dist/server.mjs';
+import { stringify, uneval } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/devalue/index.js';
+import { isVNode, toValue, isRef } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/vue/index.mjs';
+import { createHooks } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/hookable/dist/index.mjs';
+import { createFetch, Headers as Headers$1 } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/ofetch/dist/node.mjs';
+import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/node-mock-http/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/unstorage/drivers/fs.mjs';
+import { digest, hash as hash$1 } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/ohash/dist/index.mjs';
+import { toRouteMatcher, createRouter } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/radix3/dist/index.mjs';
 import { readFile } from 'node:fs/promises';
-import consola, { consola as consola$1 } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/consola/dist/index.mjs';
-import { ErrorParser } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/youch-core/build/index.js';
-import { Youch } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/nitropack/node_modules/youch/build/index.js';
-import { SourceMapConsumer } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/source-map/source-map.js';
+import consola, { consola as consola$1 } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/consola/dist/index.mjs';
+import { ErrorParser } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/youch-core/build/index.js';
+import { Youch } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/nitropack/node_modules/youch/build/index.js';
+import { SourceMapConsumer } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/source-map/source-map.js';
 import { AsyncLocalStorage } from 'node:async_hooks';
-import { getContext } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/unctx/dist/index.mjs';
-import { captureRawStackTrace, parseRawStackTrace } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/errx/dist/index.js';
+import { getContext } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/unctx/dist/index.mjs';
+import { captureRawStackTrace, parseRawStackTrace } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/errx/dist/index.js';
 import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname as dirname$1, resolve as resolve$1, basename, isAbsolute } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/pathe/dist/index.mjs';
-import { getIcons } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/@iconify/utils/lib/index.mjs';
-import { collections } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/.nuxt/nuxt-icon-server-bundle.mjs';
-import { walkResolver } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/unhead/dist/utils.mjs';
-import localAdapter from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/db0/dist/connectors/better-sqlite3.mjs';
-import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/node_modules/ipx/dist/index.mjs';
+import { dirname as dirname$1, resolve as resolve$1, basename, isAbsolute } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/pathe/dist/index.mjs';
+import { getIcons } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/@iconify/utils/lib/index.mjs';
+import { collections } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/.nuxt/nuxt-icon-server-bundle.mjs';
+import { walkResolver } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/unhead/dist/utils.mjs';
+import localAdapter from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/db0/dist/connectors/better-sqlite3.mjs';
+import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/node_modules/ipx/dist/index.mjs';
 
-const serverAssets = [{"baseName":"server","dir":"C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"C:/Users/enzo-sives/Documents/Nueva carpeta/OpenBook/server/assets"}];
 
 const assets$1 = createStorage();
 
@@ -51,11 +51,11 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets$1);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook","watchOptions":{"ignored":[null]}}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/server","watchOptions":{"ignored":[null]}}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/.nuxt"}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/.nuxt/cache"}));
-storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/.data/kv"}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"C:/Users/enzo-sives/Documents/Nueva carpeta/OpenBook","watchOptions":{"ignored":[null]}}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"C:/Users/enzo-sives/Documents/Nueva carpeta/OpenBook/server","watchOptions":{"ignored":[null]}}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"C:/Users/enzo-sives/Documents/Nueva carpeta/OpenBook/.nuxt"}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"C:/Users/enzo-sives/Documents/Nueva carpeta/OpenBook/.nuxt/cache"}));
+storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"C:/Users/enzo-sives/Documents/Nueva carpeta/OpenBook/.data/kv"}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
@@ -934,7 +934,7 @@ const _inlineRuntimeConfig = {
     },
     "localDatabase": {
       "type": "sqlite",
-      "filename": "C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/.data/content/contents.sqlite"
+      "filename": "C:/Users/enzo-sives/Documents/Nueva carpeta/OpenBook/.data/content/contents.sqlite"
     },
     "integrityCheck": true
   },
@@ -949,7 +949,7 @@ const _inlineRuntimeConfig = {
     "alias": {},
     "fs": {
       "dir": [
-        "C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/public"
+        "C:/Users/enzo-sives/Documents/Nueva carpeta/OpenBook/public"
       ]
     },
     "http": {
@@ -1325,13 +1325,13 @@ if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
 window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
 `;
 
-const _OyJfLpGSv4rrMeA3z6eYt0jCpX1F3VhJqMyZwclt_yc = (function(nitro) {
+const _McWAjBJUWZWj4L2ussveYnB1ukb_RdNhqgNzYxHb4S0 = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
     htmlContext.head.push(`<script>${script$1}<\/script>`);
   });
 });
 
-const rootDir = "C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook";
+const rootDir = "C:/Users/enzo-sives/Documents/Nueva carpeta/OpenBook";
 
 const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
 
@@ -1354,7 +1354,7 @@ const devReducers = {
   URL: (data) => data instanceof URL ? data.toString() : void 0
 };
 const asyncContext = getContext("nuxt-dev", { asyncContext: true, AsyncLocalStorage });
-const _z4Mh7wdTbqV1FSIMSo7MtyxK9EJsvqsjGwwE8wTMnE4 = (nitroApp) => {
+const _Sjip9V09SpmNH88EtTUFbjDhxkCMXicvzOpSmo__S5w = (nitroApp) => {
   const handler = nitroApp.h3App.handler;
   nitroApp.h3App.handler = (event) => {
     return asyncContext.callAsync({ logs: [], event }, () => handler(event));
@@ -1425,16 +1425,16 @@ function onConsoleLog(callback) {
 
 const script = "\"use strict\";(()=>{const t=window,e=document.documentElement,c=[\"dark\",\"light\"],n=getStorageValue(\"localStorage\",\"nuxt-color-mode\")||\"system\";let i=n===\"system\"?u():n;const r=e.getAttribute(\"data-color-mode-forced\");r&&(i=r),l(i),t[\"__NUXT_COLOR_MODE__\"]={preference:n,value:i,getColorScheme:u,addColorScheme:l,removeColorScheme:d};function l(o){const s=\"\"+o+\"\",a=\"\";e.classList?e.classList.add(s):e.className+=\" \"+s,a&&e.setAttribute(\"data-\"+a,o)}function d(o){const s=\"\"+o+\"\",a=\"\";e.classList?e.classList.remove(s):e.className=e.className.replace(new RegExp(s,\"g\"),\"\"),a&&e.removeAttribute(\"data-\"+a)}function f(o){return t.matchMedia(\"(prefers-color-scheme\"+o+\")\")}function u(){if(t.matchMedia&&f(\"\").media!==\"not all\"){for(const o of c)if(f(\":\"+o).matches)return o}return\"light\"}})();function getStorageValue(t,e){switch(t){case\"localStorage\":return window.localStorage.getItem(e);case\"sessionStorage\":return window.sessionStorage.getItem(e);case\"cookie\":return getCookie(e);default:return null}}function getCookie(t){const c=(\"; \"+window.document.cookie).split(\"; \"+t+\"=\");if(c.length===2)return c.pop()?.split(\";\").shift()}";
 
-const _dpxSsKr6owubq_28npTPjzt7Mh1z4TyyYuJtw3sjz0 = (function(nitro) {
+const _ICwJnEd2JtCmv73kr2znK4IfqgSiOkE1pIZawRCU = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
     htmlContext.head.push(`<script>${script}<\/script>`);
   });
 });
 
 const plugins = [
-  _OyJfLpGSv4rrMeA3z6eYt0jCpX1F3VhJqMyZwclt_yc,
-_z4Mh7wdTbqV1FSIMSo7MtyxK9EJsvqsjGwwE8wTMnE4,
-_dpxSsKr6owubq_28npTPjzt7Mh1z4TyyYuJtw3sjz0
+  _McWAjBJUWZWj4L2ussveYnB1ukb_RdNhqgNzYxHb4S0,
+_Sjip9V09SpmNH88EtTUFbjDhxkCMXicvzOpSmo__S5w,
+_ICwJnEd2JtCmv73kr2znK4IfqgSiOkE1pIZawRCU
 ];
 
 const assets = {};
@@ -1462,7 +1462,7 @@ function getAsset (id) {
 
 const METHODS = /* @__PURE__ */ new Set(["HEAD", "GET"]);
 const EncodingMap = { gzip: ".gz", br: ".br" };
-const _r3W_mR = eventHandler((event) => {
+const _EhKb0m = eventHandler((event) => {
   if (event.method && !METHODS.has(event.method)) {
     return;
   }
@@ -1660,7 +1660,7 @@ async function fetchDatabase(event, collection) {
 
 const warnOnceSet = /* @__PURE__ */ new Set();
 const DEFAULT_ENDPOINT = "https://api.iconify.design";
-const _eOW778 = defineCachedEventHandler(async (event) => {
+const _whRC_R = defineCachedEventHandler(async (event) => {
   const url = getRequestURL(event);
   if (!url)
     return createError({ status: 400, message: "Invalid icon request" });
@@ -1775,8 +1775,8 @@ function setSSRError(ssrContext, error) {
 
 const APP_ROOT_OPEN_TAG = `<${appRootTag}${propsToString(appRootAttrs)}>`;
 const APP_ROOT_CLOSE_TAG = `</${appRootTag}>`;
-const getServerEntry = () => import('file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
-const getClientManifest = () => import('file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getServerEntry = () => import('file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
+const getClientManifest = () => import('file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 const getSSRRenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
   if (!manifest) {
@@ -2024,7 +2024,7 @@ async function getIslandContext(event) {
   return ctx;
 }
 
-const _hWdciV = eventHandler(async (event) => {
+const _Lhm3kd = eventHandler(async (event) => {
   const collection = getRouterParam(event, "collection");
   setHeader(event, "Content-Type", "text/plain");
   const data = await useStorage().getItem(`build:content:database.compressed.mjs`) || "";
@@ -2035,7 +2035,7 @@ const _hWdciV = eventHandler(async (event) => {
       return content.substring(lineStart.length, content.length - 1);
     }
   }
-  return await import('file://C:/Users/enzo_/OneDrive/Escritorio/Proyectos/OpenBook/.nuxt/content/database.compressed.mjs').then((m) => m[collection]);
+  return await import('file://C:/Users/enzo-sives/Documents/Nueva%20carpeta/OpenBook/.nuxt/content/database.compressed.mjs').then((m) => m[collection]);
 });
 
 async function decompressSQLDump(base64Str, compressionType = "gzip") {
@@ -2306,7 +2306,7 @@ function cleanupQuery(query, options = { removeString: false }) {
   return result;
 }
 
-const _pT6Q_n = eventHandler(async (event) => {
+const _PDeaU3 = eventHandler(async (event) => {
   const { sql } = await readBody(event);
   const collection = getRouterParam(event, "collection");
   assertSafeQuery(sql, collection);
@@ -2317,7 +2317,7 @@ const _pT6Q_n = eventHandler(async (event) => {
   return loadDatabaseAdapter(conf).all(sql);
 });
 
-const _oIGF87 = lazyEventHandler(() => {
+const _mNTxVK = lazyEventHandler(() => {
   const opts = useRuntimeConfig().ipx || {};
   const fsDir = opts?.fs?.dir ? (Array.isArray(opts.fs.dir) ? opts.fs.dir : [opts.fs.dir]).map((dir) => isAbsolute(dir) ? dir : fileURLToPath(new URL(dir, globalThis._importMeta_.url))) : void 0;
   const fsStorage = opts.fs?.dir ? ipxFSStorage({ ...opts.fs, dir: fsDir }) : void 0;
@@ -2335,19 +2335,19 @@ const _oIGF87 = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_VX3unu = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_Ex7fb8 = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '', handler: _r3W_mR, lazy: false, middleware: true, method: undefined },
-  { route: '/__nuxt_error', handler: _lazy_VX3unu, lazy: true, middleware: false, method: undefined },
-  { route: '/api/_nuxt_icon/:collection', handler: _eOW778, lazy: false, middleware: false, method: undefined },
+  { route: '', handler: _EhKb0m, lazy: false, middleware: true, method: undefined },
+  { route: '/__nuxt_error', handler: _lazy_Ex7fb8, lazy: true, middleware: false, method: undefined },
+  { route: '/api/_nuxt_icon/:collection', handler: _whRC_R, lazy: false, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
-  { route: '/__nuxt_content/:collection/sql_dump.txt', handler: _hWdciV, lazy: false, middleware: false, method: undefined },
-  { route: '/__nuxt_content/:collection/query', handler: _pT6Q_n, lazy: false, middleware: false, method: undefined },
-  { route: '/_ipx/**', handler: _oIGF87, lazy: false, middleware: false, method: undefined },
-  { route: '/_fonts/**', handler: _lazy_VX3unu, lazy: true, middleware: false, method: undefined },
-  { route: '/_scripts/**', handler: _lazy_VX3unu, lazy: true, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_VX3unu, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_content/:collection/sql_dump.txt', handler: _Lhm3kd, lazy: false, middleware: false, method: undefined },
+  { route: '/__nuxt_content/:collection/query', handler: _PDeaU3, lazy: false, middleware: false, method: undefined },
+  { route: '/_ipx/**', handler: _mNTxVK, lazy: false, middleware: false, method: undefined },
+  { route: '/_fonts/**', handler: _lazy_Ex7fb8, lazy: true, middleware: false, method: undefined },
+  { route: '/_scripts/**', handler: _lazy_Ex7fb8, lazy: true, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_Ex7fb8, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {

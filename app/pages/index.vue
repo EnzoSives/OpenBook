@@ -144,7 +144,7 @@ const featuredAccessories = ref([
 
 // Puedes usar 'useHead' de Nuxt para SEO específico de esta página
 useHead({
-  title: 'El Rincón del Lector - Tu Librería Online de Libros Nuevos y Usados',
+  title: 'OpenBook - Tu Librería Online de Libros Nuevos y Usados',
   meta: [
     { name: 'description', content: 'Explora una amplia selección de libros nuevos y usados, y encuentra accesorios de lectura únicos. ¡Tu próxima aventura te espera!' }
   ]
@@ -262,7 +262,7 @@ const handleSearch = () => {
   color: white;
   overflow: hidden;
   /* ¡Aquí aplicamos la imagen de fondo directamente! */
- /* background-image: url('/images/libreria.jpg');  Asegúrate de que esta ruta sea correcta */
+ background-image: url('/images/libreria.jpg');  /* Asegúrate de que esta ruta sea correcta */
   background-size: cover; /* Cubre todo el área sin distorsionar */
   background-position: center center; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
